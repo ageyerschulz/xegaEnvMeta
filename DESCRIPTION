@@ -1,0 +1,30 @@
+Package: xegaEnvMeta
+Title: Function Factories and Problem Environments for MetaGAs
+Version: 0.0.0.1
+Authors@R: 
+    person(given = "Andreas",
+           family = "Geyer-Schulz",
+           role = c("aut", "cre"),
+           email = "Andreas.Geyer-Schulz@kit.edu",
+           comment = c(ORCID = "0009-0000-5237-3579"))
+Maintainer: Andreas Geyer-Schulz <Andreas.Geyer-Schulz@kit.edu>
+Description: A set of function factories for producing problem 
+             environments for MetaGAs and some problem environments
+             for concrete experiments as well as a replication of 
+             seminal experiments with meta genetic algorithms.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: false
+RoxygenNote: 7.2.3
+Depends: R (>= 3.5.0)
+Imports: parallelly,
+         smoof,
+         stats,
+         xegaSelectGene,
+         xegaDerivationTrees,
+         xegaGeGene,
+         xegaDfGene,
+         xegaPopulation,
+         xega
+Config/testthat/edition: 3
+Suggests: testthat (>= 3.0.0)
