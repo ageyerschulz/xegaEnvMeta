@@ -4,36 +4,6 @@
 #          Meta GA examples.
 #
 
-#' Logs results of a repeated single Meta-GA experiment.
-#'
-#' @param name   Name of experiment
-#' @param GAfit  GA performance: The sum of the squared difference between  
-#'               the GA performance and the performance of a random 
-#'               search for a problem environment summed over all 
-#'               problem environments of the experiment. 
-#' @param parm  The parameters of the experiment.
-#' @param experiment  The results of the experiment as a named list.
-#' @param lF     The local function configuration.
-#' 
-#' @return \code{NULL} invisibly.
-#'
-#' @family Reporter
-#'
-#'@export
-P5Reporter<-function(name, GAfit, parm, experiment, lF)
-{
-#   cat("Reporter\n")
-   r<-list()
-   r$GAfit<-GAfit
-   r$param<-parm
-   r$experiment<-experiment
- #  cat("fn: \n")
- #  cat("Path exists:",("path" %in% names(lF)), "\n")
-   fn<-paste(lF$path(),"xegaP5Meta", name, Sys.time(), ".rds", sep="") # nocov
-   fn<-chartr(old=" :", new="--", fn)                  # nocov
-   saveRDS(object=r, file=fn)                    # nocov
-}
-
 #' Factory for optimizing the 5 basic parameters of a standard genetic algorithm.
 #'
 #' @description This function factory sets up the problem environment 
@@ -108,15 +78,15 @@ P5Reporter<-function(name, GAfit, parm, experiment, lF)
 #' @importFrom xegaSelectGene parm 
 #' @importFrom xega xegaRun 
 #' @export
-P5metaGAFactory<-function(envList, name="",
-                          repExp=100, executionModel="Sequential",
-                          evalmethod="Deterministic",
-                          performanceMeasure="Offline", 
-                          terminationCondition="AbsoluteError", terminationEps=0.01,
-                          example=FALSE, verbose=0, log=0)
+P5metaGAFactory<-function(envList, name="P5",
+           repExp=100, executionModel="Sequential",
+           evalmethod="Deterministic",
+           performanceMeasure="Offline", 
+           terminationCondition="AbsoluteError", terminationEps=0.01,
+           example=FALSE, verbose=0, log=0)
 {
 self<-list()
-self$name<-xegaSelectGene::parm(paste("P5metaGA", name))
+self$name<-xegaSelectGene::parm(paste("metaGA", name))
 self$bitlength<-function() {rep(64,5)}
 self$genelength<-function() {sum(self$bitlength())}
 self$pnames<-function() {
@@ -156,6 +126,7 @@ self$f=function(parm, gene=0, lF=0)
 		crossrate=parm[5]
 
 	FitVec<-rep(0, length(self$envList))
+	TimeVec<-rep(0, length(self$envList))
 	RndPerfVec<-rep(0, length(self$envList))
 	GAPerfVec<-rep(0, length(self$envList))
 	GAfitVec<-rep(0, length(self$envList))
@@ -164,6 +135,7 @@ self$f=function(parm, gene=0, lF=0)
 	penvVec<-rep(NA, length(self$envList))
 	for (j in 1:length(self$envList))
 	{ penv<-self$envList[[j]] 
+        #  cat("P5 before\n")
 	  solution<-xega::xegaRun(
              penv=penv,	algorithm="sga", 
              evalmethod=self$evalmethod(),
@@ -176,6 +148,7 @@ self$f=function(parm, gene=0, lF=0)
              verbose=self$verbose(), 
              executionModel=self$executionModel()
                )
+        #  cat("P5 after\n")
           RndPerf<-penv$ERndBest()
           GAPerf<-GAPerformance(solution, stepsT=self$stepsT(), 
                    performanceMeasure=self$performanceMeasure()) 
@@ -186,16 +159,18 @@ self$f=function(parm, gene=0, lF=0)
           GAPerfVec[j]<-GAPerf 
           gOptVec[j]<-penv$globalOptimum()$value
           penvVec[j]<-penv$name()
+          TimeVec[j]<-solution$timer$tMainLoop
           FitVec[j]<-signedL2Dist(GAPerf, RndPerf)    
         }
 
+        GAtime<-sum(TimeVec)
         GAfit<-sum(FitVec)
 
 if (self$log()==1)
 {
-        df<-data.frame(penvVec, gOptVec, GAfitVec, GAstdVec, GAPerfVec, RndPerfVec, FitVec)
+        df<-data.frame(penvVec, gOptVec, GAfitVec, GAstdVec, GAPerfVec, RndPerfVec, FitVec, TimeVec)
         
-        P5Reporter(name=self$name(), parm=parm, GAfit=GAfit, experiment=df, lF=lF)
+        metaGAReporter(name=self$name(), parm=parm, GAfit=GAfit, GAtime=GAtime, experiment=df, lF=lF)
 }
 
 return(GAfit)

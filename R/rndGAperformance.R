@@ -96,13 +96,17 @@ makeRepEnvFactory<-function(penv, trials=1000, executionModel="Sequential", verb
 #' @importFrom xegaSelectGene parm 
 #' @importFrom xega xegaRun
 #' @export
-rndPerformance<-function(penv, trials=1000, repExp=100, executionModel="Sequential", verbose=0)
+rndPerformance<-function(penv, trials=1000, repExp=100, 
+        executionModel="Sequential", verbose=0)
 { 
-     r1<-xega::xegaRun(penv=penv, algorithm="sga", max=penv$max(), elitist=FALSE, verbose=verbose, 
+     r1<-xega::xegaRun(penv=penv, algorithm="sga", max=penv$max(), 
+                       elitist=FALSE, verbose=verbose, 
                        popsize=trials, generations=1, executionModel)
 
-     repEnv<-makeRepEnvFactory(penv=penv, trials=trials, executionModel=executionModel, verbose=verbose)
-     rRepExp<-xega::xegaRun(penv=repEnv, popsize=1, max=TRUE, generations=1, evalrep=repExp, 
+     repEnv<-makeRepEnvFactory(penv=penv, trials=trials, 
+                      executionModel=executionModel, verbose=verbose)
+     rRepExp<-xega::xegaRun(penv=repEnv, popsize=1, max=TRUE, 
+                      generations=1, evalrep=repExp, 
                             executionModel, verbose=0)
 
      newPenv<-penv

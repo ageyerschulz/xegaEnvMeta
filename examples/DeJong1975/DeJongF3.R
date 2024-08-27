@@ -71,7 +71,7 @@ self$max<-function() {return(FALSE)}
 self$globalOptimum<-function()
 {l<-list();l$param<-rep(-5.12, 5); l$value<--30; l$is.minimum<-TRUE;return(l)}
 t<-self$name(); t<-self$bitlength(); t<-self$genelength(); t<-self$lb()
-t<-self$ub(); t<-self$max(); t<-self$globalOptimum(); t<-self$describe()
+t<-self$ub(); t<-self$max(); t<-self$globalOptimum();
 t<-self$solution(); t<-self$f(rep(1,5))
 return(self)
 }

@@ -79,7 +79,7 @@ self$solution<-function() { s<-list()
                  return(s) } 
 # force!
 t<-self$name(); t<-self$bitlength(); t<-self$genelength(); t<-self$lb()
-t<-self$ub(); t<-self$max(); t<-self$globalOptimum(); t<-self$describe()
+t<-self$ub(); t<-self$max(); t<-self$globalOptimum();
 t<-self$solution(); t<-self$f(rep(1,3))
 return(self)
 }

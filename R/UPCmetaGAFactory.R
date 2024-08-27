@@ -4,36 +4,6 @@
 #          Meta GA examples.
 #
 
-#' Logs results of a repeated single Meta-GA experiment.
-#'
-#' @param name   Name of experiment
-#' @param GAfit  GA performance: The sum of the squared difference between  
-#'               the GA performance and the performance of a random 
-#'               search for a problem environment summed over all 
-#'               problem environments of the experiment. 
-#' @param parm  The parameters of the experiment.
-#' @param experiment  The results of the experiment as a named list.
-#' @param lF     The local function configuration.
-#' 
-#' @return \code{NULL} invisibly.
-#'
-#' @family Reporter
-#'
-#'@export
-UPCReporter<-function(name, GAfit, parm, experiment, lF)
-{
-#   cat("Reporter\n")
-   r<-list()
-   r$GAfit<-GAfit
-   r$param<-parm
-   r$experiment<-experiment
- #  cat("fn: \n")
- #  cat("Path exists:",("path" %in% names(lF)), "\n")
-   fn<-paste(lF$path(),"xegaUPCMeta", name, Sys.time(), ".rds", sep="") # nocov
-   fn<-chartr(old=" :", new="--", fn)                  # nocov
-   saveRDS(object=r, file=fn)                    # nocov
-}
-
 #' Factory for optimizing the basic parameters of a GA with parameterized uniform crossover.
 #'
 #' @description The function factory \code{UPCMetaGAFactory} sets up the problem environment 
@@ -109,19 +79,20 @@ UPCReporter<-function(name, GAfit, parm, experiment, lF)
 #' @importFrom xegaSelectGene parm 
 #' @importFrom xega xegaRun 
 #' @export
-UPCmetaGAFactory<-function(envList, name="",
-                          repExp=100, executionModel="Sequential",
-                          evalmethod="Deterministic",
-                          performanceMeasure="Offline", 
-                          terminationCondition="AbsoluteError", terminationEps=0.01,
-                          example=FALSE, verbose=0, log=0)
+UPCmetaGAFactory<-function(envList, name="UPC",
+             repExp=100, executionModel="Sequential",
+             evalmethod="Deterministic",
+             performanceMeasure="Offline", 
+             terminationCondition="AbsoluteError", terminationEps=0.01,
+             example=FALSE, verbose=0, log=0)
 {
 self<-list()
-self$name<-xegaSelectGene::parm(paste("P5metaGA", name))
+self$name<-xegaSelectGene::parm(paste("metaGA", name))
 self$bitlength<-function() {rep(64,6)}
 self$genelength<-function() {sum(self$bitlength())}
 self$pnames<-function() {
-     c("popsize", "generations", "mutrate", "bitmutrate", "crossrate", "uCrossSwap")}
+     c("popsize", "generations", "mutrate", 
+       "bitmutrate", "crossrate", "uCrossSwap")}
 self$lb<-function() {c(10, 10, 0.001, 0.0001, 0.001, 0.0001)}
 if (example)
  {self$ub<-function() {c(15, 15, 1.0, 0.5, 0.5, 0.5)}
@@ -147,8 +118,6 @@ self$envList=envList
 ### fitness function.
 self$f=function(parm, gene=0, lF=0) 
 	{
- #      cat("f: Path exists:",("path" %in% names(lF)), "\n")
-        
         ### set up parameters
 		popsize=as.integer(parm[1])
 		generations=as.integer(parm[2])
@@ -158,6 +127,7 @@ self$f=function(parm, gene=0, lF=0)
                 uCrossSwap=parm[6]
 
 	FitVec<-rep(0, length(self$envList))
+	TimeVec<-rep(0, length(self$envList))
 	RndPerfVec<-rep(0, length(self$envList))
 	GAPerfVec<-rep(0, length(self$envList))
 	GAfitVec<-rep(0, length(self$envList))
@@ -166,7 +136,7 @@ self$f=function(parm, gene=0, lF=0)
 	penvVec<-rep(NA, length(self$envList))
 	for (j in 1:length(self$envList))
 	{ penv<-self$envList[[j]] 
-          # cat("calling xegaRun with penv", penv$name(),"\n")
+        #  cat("calling xegaRun with penv", penv$name(),"\n")
 	  solution<-xega::xegaRun(
              penv=penv,	algorithm="sga", 
              evalmethod=self$evalmethod(),
@@ -181,7 +151,7 @@ self$f=function(parm, gene=0, lF=0)
              verbose=self$verbose(), 
              executionModel=self$executionModel()
                )
-          # cat("Return from xegaRun with penv", penv$name(),"\n")
+        #  cat("Return from xegaRun with penv", penv$name(),"\n")
           RndPerf<-penv$ERndBest()
           GAPerf<-GAPerformance(solution, stepsT=self$stepsT(), 
                    performanceMeasure=self$performanceMeasure()) 
@@ -192,16 +162,24 @@ self$f=function(parm, gene=0, lF=0)
           GAPerfVec[j]<-GAPerf 
           gOptVec[j]<-penv$globalOptimum()$value
           penvVec[j]<-penv$name()
+          TimeVec[j]<-solution$timer$tMainLoop
           FitVec[j]<-signedL2Dist(GAPerf, RndPerf)    
         }
 
+        GAtime<-sum(TimeVec)
         GAfit<-sum(FitVec)
 
 if (self$log()==1)
 {
-        df<-data.frame(penvVec, gOptVec, GAfitVec, GAstdVec, GAPerfVec, RndPerfVec, FitVec)
-        
-        UPCReporter(name=self$name(), parm=parm, GAfit=GAfit, experiment=df, lF=lF)
+        df<-data.frame(penvVec, gOptVec, GAfitVec, GAstdVec, 
+                       GAPerfVec, RndPerfVec, FitVec, TimeVec)
+
+#        cat("Path:\n")
+#        cat("UPC$f Path:", lF$path(),  "\n")
+               
+
+        metaGAReporter(name=self$name(), parm=parm, GAfit=GAfit, 
+                             GAtime=GAtime, experiment=df, lF=lF)
 }
 
 return(GAfit)
