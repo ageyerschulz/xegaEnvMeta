@@ -32,11 +32,13 @@ b<-lapply(a, FUN=readRDS)
 # extract all fields of the same type.
 extractParms<-function(elem) {  return(elem$param)  }
 extractGAfit<-function(elem) {  return(elem$GAfit)  }
+extractTime<-function(elem) {  return(elem$GAtime)  }
 extractExperiment<-function(elem) {  return(elem$experiment)  }
 # append data frames 
 append<-function(df1, df2) {return (rbind(df1, df2))}
 c<-lapply(b, extractParms)
 fit<-lapply(b, extractGAfit)
+tsec<-lapply(b, extractTime)
 exp<-lapply(b, extractExperiment)
 d<-unique(c)
 r<-list()
@@ -48,12 +50,16 @@ for (i in 1:length(d))
 # print(d[[i]])
 el<-list()
 el$param<-d[[i]]
-m<-c %in% d[i]
-tmp<-unlist(fit[m])
-el$GAfitVec<-tmp
-el$GAfit<-mean(tmp)
-el$GAstd<-sd(tmp)
-el$GAobs<-length(tmp)
+m<-c %in% d[i] ## index
+tmpfit<-unlist(fit[m])
+tmptsec<-unlist(tsec[m])
+el$GAfitVec<-tmpfit
+el$GAtimeVec<-tmptsec
+el$GAtime<-mean(tmptsec)
+el$GAtimestd<-sd(tmptsec)
+el$GAfit<-mean(tmpfit)
+el$GAstd<-sd(tmpfit)
+el$GAobs<-length(tmpfit)
 el$exp<-Reduce(append, exp[m])
 r[[i]]<-el
 }
@@ -96,6 +102,10 @@ extractGAfit<-function(elem)
 {  return(elem$GAfit)  }
 extractGAstd<-function(elem)
 {  return(elem$GAstd)  }
+extractGAtime<-function(elem)
+{  return(elem$GAtime)  }
+extractGAtimestd<-function(elem)
+{  return(elem$GAtimestd)  }
 extractGAobs<-function(elem)
 {  return(elem$GAobs)  }
 # data transformations
@@ -103,11 +113,12 @@ tmp<-lapply(l, FUN=extractParms)
 df1<-t(data.frame(tmp))
 fit<-unlist(lapply(l, FUN=extractGAfit))
 std<-unlist(lapply(l, FUN=extractGAstd))
+sec<-unlist(lapply(l, FUN=extractGAtime))
+stdsec<-unlist(lapply(l, FUN=extractGAtimestd))
 obs<-unlist(lapply(l, FUN=extractGAobs))
-df2<-data.frame(fit, std, obs)
+df2<-data.frame(fit, std, sec, stdsec, obs)
 result<-cbind(df2, df1)
-### Dependency!
-cn<-c("Fit", "sigma(Fit)", "Obs")
+cn<-c("Fit", "sigma(Fit)", "t", "sigma(t)", "Obs")
 cn<-c(cn, solution$GAenv$penv$pnames())
 row.names(result)<-NULL
 names(result)<-cn
