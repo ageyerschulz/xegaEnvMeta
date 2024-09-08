@@ -1,0 +1,77 @@
+Best Solution in Iteration: 1 
+Max(fit):  5092.282 No. solutions:  1 Indices of best genes:  21 
+Best Solution in Iteration: 2 
+Max(fit):  5027.735 No. solutions:  1 Indices of best genes:  9 
+Best Solution in Iteration: 3 
+Max(fit):  5159.914 No. solutions:  1 Indices of best genes:  1 
+Best Solution in Iteration: 4 
+Max(fit):  5147.978 No. solutions:  1 Indices of best genes:  46 
+Best Solution in Iteration: 5 
+Max(fit):  5146.862 No. solutions:  1 Indices of best genes:  10 
+Best Solution in Iteration: 6 
+Max(fit):  5143.969 No. solutions:  1 Indices of best genes:  37 
+Best Solution in Iteration: 7 
+Max(fit):  5158.804 No. solutions:  1 Indices of best genes:  36 
+Best Solution in Iteration: 8 
+Max(fit):  5211.361 No. solutions:  1 Indices of best genes:  23 
+Best Solution in Iteration: 9 
+Max(fit):  5196.8 No. solutions:  1 Indices of best genes:  49 
+Best Solution in Iteration: 10 
+Max(fit):  5199.381 No. solutions:  1 Indices of best genes:  1 
+Best Solution in Iteration: 10 
+Max(fit):  5234.119 No. solutions:  1 Indices of best genes:  6 
+IVmetaGA finished
+
+The meta GA experiment  MetaGAIVDeJong1975  ( 1725005094 ):
+
+ The environments and the performance of random search:
+
+  Environment Max! gOpt Trials Rep      rndBest  E(rndBest) sigma(RndBest)
+1    DeJongF1    0    0   1000 100   0.42443863   0.3909774     0.21484399
+2    DeJongF2    0    0   1000 100   0.02123272   0.0521714     0.04934549
+3    DeJongF3    0  -30   1000 100 -24.00000000 -21.8100000     1.48184297
+4    DeJongF4    0    0   1000 100  69.57334282  69.5558505    12.27943699
+5    DeJongF5    0    1   1000 100   1.03948530   3.7275705     2.41078775
+
+ The hyper parameter space:
+
+     MetaEnvironment  Parameters Lower Upper Bits
+1 MetaGAIVDeJong1975     popsize 1e+01  1000   64
+2 MetaGAIVDeJong1975 generations 1e+01  1000   64
+3 MetaGAIVDeJong1975     mutrate 1e-03     1   64
+4 MetaGAIVDeJong1975    mutrate2 1e-03     1   64
+5 MetaGAIVDeJong1975  bitmutrate 1e-04     1   64
+6 MetaGAIVDeJong1975 bitmutrate2 1e-04     1   64
+7 MetaGAIVDeJong1975   crossrate 1e-03     1   64
+8 MetaGAIVDeJong1975  crossrate2 1e-03     1   64
+9 MetaGAIVDeJong1975   cutOffFit 1e-03     1   64
+
+ The parameters of the  meta GA:
+
+   Meta GA Parameters             Values
+1                penv MetaGAIVDeJong1975
+2           algorithm                sga
+3                 max               TRUE
+4             popsize                 50
+5         generations                 10
+6           crossrate                0.2
+7             mutrate                  1
+8          bitmutrate              0.005
+9             elitist               TRUE
+10            evalrep                  1
+11      excutionModel       MultiCoreHet
+
+ The 10 best results:
+       Fit sigma(Fit)      t sigma(t) Obs popsize generations mutrate mutrate2 bitmutrate bitmutrate2 crossrate crossrate2 cutOffFit
+1  5234.12         NA 413.41       NA   1  602.96      661.49    0.08     0.30       0.18           0      0.03       0.99      0.24
+2  5174.01         NA 523.62       NA   1  810.34      660.91    0.21     0.23       0.16           1      0.09       0.99      0.24
+3  5169.70         NA 543.29       NA   1  810.34      660.91    0.21     0.23       0.16           1      0.09       0.99      0.23
+4  5168.36         NA 560.17       NA   1  810.34      660.91    0.21     0.23       0.16           1      0.03       0.99      0.23
+5  5168.25       1.05 279.32   107.61   2  810.28      413.50    0.08     0.05       0.17           0      0.03       0.99      0.56
+6  5166.73         NA 126.62       NA   1  272.72      590.86    0.21     0.48       0.16           1      0.64       0.37      0.76
+7  5166.09         NA 166.82       NA   1  808.34      181.38    0.17     0.82       0.70           0      0.09       0.87      0.81
+8  5165.56         NA 324.19       NA   1  373.80      859.80    0.08     0.05       0.67           0      0.03       0.99      0.24
+9  5163.71         NA 282.66       NA   1  373.80      859.80    0.08     0.05       0.17           0      0.03       0.99      0.24
+10 5153.35         NA 338.66       NA   1  373.80      872.96    0.10     0.05       0.17           0      0.03       0.99      0.24
+
+DeJong (IV) 1975 finished!

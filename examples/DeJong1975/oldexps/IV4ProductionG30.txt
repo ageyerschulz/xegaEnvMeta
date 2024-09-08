@@ -1,0 +1,74 @@
+Best Solution in Iteration: 1 
+Max(fit):  104461.3 No. solutions:  1 Indices of best genes:  3 
+Best Solution in Iteration: 2 
+Max(fit):  89831.95 No. solutions:  1 Indices of best genes:  1 
+Best Solution in Iteration: 2 
+Max(fit):  96699.18 No. solutions:  1 Indices of best genes:  3 
+
+ meta GA finished
+
+The meta GA experiment  MetaGAIV4DeJong1975  ( 1725121495 ):
+
+ The environments and the performance of random search:
+
+  Environment Max! gOpt Trials Rep     rndBest E(rndBest) sigma(RndBest)
+1    DeJongF1    0    0     10  10   6.2774997   6.534284       4.174114
+2    DeJongF2    0    0     10  10   0.9358322  13.801880      28.924956
+3    DeJongF3    0  -30     10  10  -8.0000000 -11.500000       3.308239
+4    DeJongF5    0    1     10  10 166.0543263 346.398765     173.500852
+
+ The hyper parameter space:
+
+      MetaEnvironment  Parameters Lower Upper Bits
+1 MetaGAIV4DeJong1975     popsize 1e+01    15   64
+2 MetaGAIV4DeJong1975 generations 1e+01    15   64
+3 MetaGAIV4DeJong1975     mutrate 1e-05     1   64
+4 MetaGAIV4DeJong1975    mutrate2 1e-05     1   64
+5 MetaGAIV4DeJong1975  bitmutrate 1e-05     1   64
+6 MetaGAIV4DeJong1975 bitmutrate2 1e-05     1   64
+7 MetaGAIV4DeJong1975   crossrate 1e-05     1   64
+8 MetaGAIV4DeJong1975  crossrate2 1e-05     1   64
+9 MetaGAIV4DeJong1975   cutOffFit 1e-05     1   64
+
+ The parameters of the  meta GA:
+
+   Meta GA Parameters              Values
+1                penv MetaGAIV4DeJong1975
+2           algorithm                 sga
+3                 max                TRUE
+4             popsize                   3
+5         generations                   2
+6           crossrate                 0.2
+7             mutrate                   1
+8          bitmutrate               0.005
+9             elitist                TRUE
+10            evalrep                   2
+11      excutionModel        MultiCoreHet
+
+ IV The 10 best results:
+          Fit sigma(Fit)          t     sigma(t) Obs  popsize generations    mutrate  mutrate2 bitmutrate bitmutrate2 crossrate crossrate2
+1    96699.18   24769.03 0.09333980 0.0042661040   2 14.17276    11.19799 0.87058251 0.9143821  0.9759685   0.6856065 0.3767753  0.1348201
+2    94916.93   18535.66 0.09627597 0.0047625869   6 14.17276    11.19677 0.87058251 0.9143821  0.9759683   0.6856065 0.3767753  0.1348201
+3    86919.53   36923.94 0.09986186 0.0006848020   2 14.17276    11.19677 0.87058251 0.9143821  0.9759683   0.6856065 0.3767753  0.1348201
+4    82500.23   25811.24 0.11703181 0.0062866239   2 14.16871    14.55792 0.64209930 0.3692073  0.1382721   0.4894066 0.6979618  0.6210875
+5    52013.00   48038.22 0.09506607 0.0029833225   2 14.17276    11.19677 0.87052148 0.9143821  0.9759683   0.6856067 0.3767753  0.1348201
+6    43939.36   27657.79 0.10062742 0.0005162146   2 14.17276    11.19677 0.87058251 0.9143821  0.9759683   0.6855988 0.3767753  0.1348201
+7    31939.51   62843.25 0.08632088 0.0036849833   2 12.80129    12.59124 0.07751318 0.2640443  0.5910281   0.8603312 0.2231792  0.8607520
+NA         NA         NA         NA           NA  NA       NA          NA         NA        NA         NA          NA        NA         NA
+NA.1       NA         NA         NA           NA  NA       NA          NA         NA        NA         NA          NA        NA         NA
+NA.2       NA         NA         NA           NA  NA       NA          NA         NA        NA         NA          NA        NA         NA
+     cutOffFit
+1    0.7011729
+2    0.7011729
+3    0.7011729
+4    0.6693783
+5    0.7011729
+6    0.7011729
+7    0.6553140
+NA          NA
+NA.1        NA
+NA.2        NA
+
+ meta GA post processing finished!
+
+ DeJong (IV) 1975 finished!

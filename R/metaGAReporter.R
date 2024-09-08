@@ -4,6 +4,11 @@
 #          Meta GA examples.
 #
 
+#' Temporary directory name.
+#'@export
+xegaTmpDir<-function() 
+{ paste(tempdir(), "/", sep="")}
+
 #' Meta GA filenames.
 #'
 #' @param name   Name of meta GA experiment.
@@ -11,31 +16,36 @@
 #'
 #' @return Name list of
 #'         \itemize{
-#'         \item \code{$fnsolution}  File name of \code{xega::xegaRun()} 
-#'               meta GA solution.
-#'         \item \code{$fnexperiment} File name of list of 
-#'                 results of all hyper parameter points evaluated
-#'                 for solving all problem environments in the experiment.
-#'         \item \code{$fndetails}  Filename of data frame of 
-#'                 aggregated experiments.
+#'         \item \code{$rMeta}  Filename of result list of 
+#'               meta GA experiment with the following elements:
+#'               \itemize{                
+#'               \item \code{$solution} The solution of the metaGA experiment.
+#'               \item \code{$experiment} A list whose elements 
+#'                                        represent the experimental results
+#'                                        for one hyper parameter point.
+#'               \item \code{$details} The hyper parameter points 
+#'                                     and their performance sorted in 
+#'                                     decreasing order. 
+#'               }
 #'         \item \code{$fnlog} Preamble of log file name. 
 #'               Each log contains the result of the experiment for 
 #'               one hyper parameter point.
+#'         \item \code{$logpattern} Preamble of log file without path.
 #'          } 
 #'
 #' @export
 metaGAfn<-function(name, path="")
 { translate<-function(fn) {return(chartr(old=" :", new="--", fn))}
   ts<-Sys.time()
-  fnsolution<-paste(path,"xega", name,"-Solution-", ts, ".rds", sep="")
-  fnexperiment<-paste(path,"xega", name,"-Experiment-", ts, ".rds", sep="")
-  fndetails<-paste(path,"xega", name,"-Details-", ts, ".rds", sep="")
-  fnlog<-paste(path,"xega", name,"-Log-", sep="")
+  p<-path
+  if (!path=="") {p<-paste(p, sep="")}
+  fnrMeta<-paste(p,"xega", name,"-rMeta-", ts, ".rds", sep="")
+  fnlog<-paste(p,"xega", name,"-Log-", sep="")
+  fnlogpattern<-paste("xega", name,"-Log-", sep="")
   l<-list()
-  l$solutionFn<-translate(fnsolution)
   l$log<-chartr(old=" ", new="-", fnlog)
-  l$experiment<-translate(fnexperiment)
-  l$details<-translate(fndetails)
+  l$logpattern<-chartr(old=" ", new="-", fnlogpattern)
+  l$rMeta<-translate(fnrMeta)
   return(l) 
 }
 

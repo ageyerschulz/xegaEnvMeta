@@ -107,7 +107,7 @@ rndPerformance<-function(penv, trials=1000, repExp=100,
                       executionModel=executionModel, verbose=verbose)
      rRepExp<-xega::xegaRun(penv=repEnv, popsize=1, max=TRUE, 
                       generations=1, evalrep=repExp, 
-                            executionModel, verbose=0)
+                      executionModel=executionModel, verbose=0)
 
      newPenv<-penv
      newPenv$rndBest<-xegaSelectGene::parm(r1$solution$fitness)

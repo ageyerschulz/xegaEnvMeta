@@ -1,0 +1,132 @@
+Best Solution in Iteration: 1 
+Max(fit):  74.26925 No. solutions:  1 Indices of best genes:  27 
+Best Solution in Iteration: 2 
+Max(fit):  74.48669 No. solutions:  1 Indices of best genes:  27 
+Best Solution in Iteration: 3 
+Max(fit):  74.44487 No. solutions:  1 Indices of best genes:  15 
+Best Solution in Iteration: 4 
+Max(fit):  74.1513 No. solutions:  1 Indices of best genes:  1 
+Best Solution in Iteration: 5 
+Max(fit):  74.49247 No. solutions:  1 Indices of best genes:  1 
+Best Solution in Iteration: 6 
+Max(fit):  74.21178 No. solutions:  1 Indices of best genes:  45 
+Best Solution in Iteration: 7 
+Max(fit):  74.42847 No. solutions:  1 Indices of best genes:  30 
+Best Solution in Iteration: 8 
+Max(fit):  74.35435 No. solutions:  1 Indices of best genes:  27 
+Best Solution in Iteration: 9 
+Max(fit):  74.56434 No. solutions:  1 Indices of best genes:  1 
+Best Solution in Iteration: 10 
+Max(fit):  74.71066 No. solutions:  1 Indices of best genes:  19 
+Best Solution in Iteration: 11 
+Max(fit):  74.39013 No. solutions:  1 Indices of best genes:  19 
+Best Solution in Iteration: 12 
+Max(fit):  74.3533 No. solutions:  1 Indices of best genes:  1 
+Best Solution in Iteration: 13 
+Max(fit):  74.43791 No. solutions:  1 Indices of best genes:  46 
+Best Solution in Iteration: 14 
+Max(fit):  74.47747 No. solutions:  1 Indices of best genes:  25 
+Best Solution in Iteration: 15 
+Max(fit):  74.53234 No. solutions:  1 Indices of best genes:  46 
+Best Solution in Iteration: 16 
+Max(fit):  74.2801 No. solutions:  1 Indices of best genes:  25 
+Best Solution in Iteration: 17 
+Max(fit):  74.69135 No. solutions:  1 Indices of best genes:  39 
+Best Solution in Iteration: 18 
+Max(fit):  74.33337 No. solutions:  1 Indices of best genes:  1 
+Best Solution in Iteration: 19 
+Max(fit):  74.49596 No. solutions:  1 Indices of best genes:  19 
+Best Solution in Iteration: 20 
+Max(fit):  74.45176 No. solutions:  1 Indices of best genes:  9 
+Best Solution in Iteration: 20 
+Max(fit):  74.44237 No. solutions:  1 Indices of best genes:  11 
+
+ meta GA finished
+
+ meta GA post processing finished!
+The meta GA experiment  MetaGAP4DeJong1975  ( Do Sep 05 00:03:44 2024 ):
+
+ The environments and the performance of random search:
+
+  Environment Max! gOpt Trials Rep      rndBest   E(rndBest) sigma(RndBest)
+1    DeJongF1    0    0   1000 100   0.06649889   0.33634208     0.23486150
+2    DeJongF2    0    0   1000 100   0.07944953   0.05071805     0.04664801
+3    DeJongF3    0  -30   1000 100 -21.00000000 -22.06000000     1.69264601
+4    DeJongF5    0    1   1000 100   9.30593520   4.53596365     3.10935281
+
+ The hyper parameter space:
+
+     MetaEnvironment  Parameters Lower Upper Bits
+1 MetaGAP4DeJong1975     popsize 1e+01  1000   10
+2 MetaGAP4DeJong1975 generations 1e+01  1000   10
+3 MetaGAP4DeJong1975     mutrate 1e-05     1    8
+4 MetaGAP4DeJong1975  bitmutrate 1e-05     1    8
+5 MetaGAP4DeJong1975   crossrate 1e-05     1    8
+
+ The parameters of the  meta GA:
+
+   Meta GA Parameters             Values
+1                penv MetaGAP4DeJong1975
+2           algorithm                sga
+3                 max               TRUE
+4             popsize                 50
+5         generations                 20
+6           crossrate                0.2
+7             mutrate                  1
+8          bitmutrate               0.05
+9             elitist               TRUE
+10            evalrep                  1
+11      excutionModel       MultiCoreHet
+The best  5 results of meta-GA experiment  MetaGAP4DeJong1975 
+       Fit sigma(Fit)        t sigma(t) Obs  popsize generations    mutrate bitmutrate crossrate
+1 74.70461         NA 3.832232       NA   1 533.5484    624.5161 0.23530176 0.01177459 0.6823561
+2 74.46659         NA 2.212655       NA   1 260.6452    373.8710 0.48627965 0.01177459 0.6745131
+3 74.46301         NA 4.235634       NA   1 962.2581    378.7097 0.01569612 0.94902012 0.4039275
+4 74.45909  0.1049947 5.405198 1.942279   3 558.7097    550.0000 0.03138224 0.24706635 0.6549054
+5 74.44803         NA 6.218734       NA   1 760.9677    431.9355 0.00001000 0.48627965 0.4431428
+
+ DeJong (P4) 1975 finished!
+Best Solution in Iteration: 1 
+Max(fit):  74.85704 No. solutions:  1 Indices of best genes:  94 
+Fitness Min: 72.56888  Q1: 73.73069  Mean: 73.95054  Q3: 74.2752  Max: 74.85704 
+Fitness: 74.85704 Value of Phenotype: 74.85704 
+Phenotype:
+[1] 543.22580645 313.87096774   0.03530376   0.03138224   0.90196176
+
+ Robustness Analysis of  P4DeJong1975RobustOpt finished!
+
+ Analysis of hyper parameter point:
+ 543.2258 313.871 0.03530376 0.03138224 0.9019618 
+
+       Fit sigma(Fit)        t sigma(t) Obs  popsize generations    mutrate bitmutrate crossrate
+1 73.95054  0.4523962 6.196071 1.926755 100 543.2258     313.871 0.03530376 0.03138224 0.9019618
+            Fit      Time stdTimeVec     RndPerf      GAPerf        GAfit      GAstd gOpt early gen  agen  feval   afeval    penvn envW Obs
+1  0.0769471015 0.6614911 0.28381328 -0.33634208 -0.06020120   0.05897811 0.02658200    0   100 313  5.62 170502  3051.66 DeJongF1    1 100
+2  0.0005079853 0.2031099 0.07922097 -0.05071805 -0.03733091   0.03724265 0.02654764    0   100 313  2.29 170502  1243.47 DeJongF2    1 100
+3 61.6008609600 4.3866240 1.67134917 22.06000000 29.90858000 -30.00000000 0.00000000  -30   100 313 34.65 170502 18814.95 DeJongF3    1 100
+4 12.2722261883 0.9448462 0.85198445 -4.53596365 -1.03292168   1.02529889 0.03091072    1   100 313  5.13 170502  2785.59 DeJongF5    1 100
+   OPT      L1err       L2err   L1errstd Psuccess     terminate Eps   SSshare
+1 Min! 0.05897811 0.004177954 0.02658200        1 AbsoluteError 0.1 0.5323149
+2 Min! 0.03724265 0.002084744 0.02654764        1 AbsoluteError 0.1 0.2656182
+3 Min! 0.00000000 0.000000000 0.00000000        1 AbsoluteError 0.1 0.0000000
+4 Min! 0.02600866 0.001585952 0.03030987        1 AbsoluteError 0.1 0.2020668
+  Opt!        f w gOpt  E(fit) [GA] sigma(fit) [GA]      E(t)   sigma(t)   n
+1 Min! DeJongF1 1    0   0.05897811      0.02658200 0.6614911 0.28381328 100
+2 Min! DeJongF2 1    0   0.03724265      0.02654764 0.2031099 0.07922097 100
+3 Min! DeJongF3 1  -30 -30.00000000      0.00000000 4.3866240 1.67134917 100
+4 Min! DeJongF5 1    1   1.02529889      0.03091072 0.9448462 0.85198445 100
+  Opt!        f w gOpt  E(fit) [GA] E(fit) [Meta] E(RndPerformance) E(GAPerformance)   n
+1 Min! DeJongF1 1    0   0.05897811  0.0769471015       -0.33634208      -0.06020120 100
+2 Min! DeJongF2 1    0   0.03724265  0.0005079853       -0.05071805      -0.03733091 100
+3 Min! DeJongF3 1  -30 -30.00000000 61.6008609600       22.06000000      29.90858000 100
+4 Min! DeJongF5 1    1   1.02529889 12.2722261883       -4.53596365      -1.03292168 100
+  Opt!        f w gOpt  E(fit) [GA] P(d(gOpt, GAopt)<Eps)   E(L1err) sigma(L1err)    E(L2err) share(SS)
+1 Min! DeJongF1 1    0   0.05897811                     1 0.05897811   0.02658200 0.004177954 0.5323149
+2 Min! DeJongF2 1    0   0.03724265                     1 0.03724265   0.02654764 0.002084744 0.2656182
+3 Min! DeJongF3 1  -30 -30.00000000                     1 0.00000000   0.00000000 0.000000000 0.0000000
+4 Min! DeJongF5 1    1   1.02529889                     1 0.02600866   0.03030987 0.001585952 0.2020668
+  Opt!        f w gOpt  E(fit) [GA] P(d(gOpt, GAopt)<Eps) Eps E(actual fevals) Max(fevals) E(actual generations)
+1 Min! DeJongF1 1    0   0.05897811                     1 0.1          3051.66      170502                  5.62
+2 Min! DeJongF2 1    0   0.03724265                     1 0.1          1243.47      170502                  2.29
+3 Min! DeJongF3 1  -30 -30.00000000                     1 0.1         18814.95      170502                 34.65
+4 Min! DeJongF5 1    1   1.02529889                     1 0.1          2785.59      170502                  5.13

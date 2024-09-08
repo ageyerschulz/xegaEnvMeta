@@ -13,6 +13,7 @@
 #'
 #' @param pattern   Regular expression which matches the files 
 #'                  produced by a single run of a meta GA.
+#' @param path      Path for log files. Default: \code{""}. 
 #'
 #' @return A vector of all solutions tried sorted by decreasing 
 #'         average GA performance.
@@ -21,14 +22,13 @@
 #'
 #'@importFrom stats sd
 #'@export
-aggregateMetaResults<-function(pattern)
+aggregateMetaResults<-function(pattern, path)
 {
-# read all files in local directory
-a<-list.files(pattern=pattern)
-#a<-list.files()
-# cat("pattern:", pattern,"files:\n")
-# print(a)
-b<-lapply(a, FUN=readRDS)
+a<-list.files(path=path, pattern=pattern)
+aa<-lapply(a, 
+           FUN=function(x, path=path) {paste(path, x, sep="")}, 
+           path=path)
+b<-lapply(aa, FUN=readRDS)
 # extract all fields of the same type.
 extractParms<-function(elem) {  return(elem$param)  }
 extractGAfit<-function(elem) {  return(elem$GAfit)  }
@@ -127,23 +127,37 @@ return(result)
 
 #' Backend processing.
 #'
-#' @description  Produces several files.
+#' @description  Produce a single file which contains the meta GA experiment 
+#'               results. The file name contains \code{"-rMeta-"}.
+#'               If no path is specified, the file is written into 
+#'               the current directory.
 #'
-#' @param solution  meta GA solution.
+#' @param solution  The Meta GA solution.
+#' @param path      Path to file directory. Default: \code{""}.
 #'
-#' @return  A data frame. GA-parameters sorted by decreasing fitness.
-#'
+#' @return A named list with the following elements:
+#'         \itemize{
+#'         \item \code{$solution}    The meta GA solution. 
+#'         \item \code{$experiment}  A list.
+#'         \item \code{$details}     A data frame. 
+#'         }
 #'@export
-metaGApostProcessing<-function(solution)
+metaGApostProcessing<-function(solution, path="")
 {
 # solution
-metaGAfns<-metaGAfn(name=solution$GAenv$penv$name(), path="")
-saveRDS(solution, file=metaGAfns$solution)
+metaGAfns<-metaGAfn(name=solution$GAenv$penv$name(), path=path)
+# saveRDS(solution, file=metaGAfns$solution)
 # aggregate experimental data
-experiment<-aggregateMetaResults(pattern=metaGAfns$log)
-saveRDS(experiment, file=metaGAfns$experiment)
+experiment<-aggregateMetaResults(pattern=metaGAfns$logpattern, path=path)
+# saveRDS(experiment, file=metaGAfns$experiment)
 # convert to data frame
 details<-convertMetaResults(experiment, solution=solution)
-saveRDS(details, file=metaGAfns$details)
-return(details)
+# saveRDS(details, file=metaGAfns$details)
+l<-list()
+l$solution<-solution
+l$experiment<-experiment
+l$details<-details
+saveRDS(l, file=metaGAfns$rMeta)
+return(l)
 }
+

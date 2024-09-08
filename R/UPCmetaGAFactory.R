@@ -25,13 +25,17 @@
 #'          of package \code{xega}.
 #'
 #' @param  envList   List of problem environments.
+#' @param envWeights Weights of environments. Default: \code{1.0}.
 #' @param  name      Name of of the meta genetic algorithm problem environment.
 #' @param  repExp    Number of repeated runs of the genetic algorithm.         
-#' @param  example   Boolean. If \code{TRUE}, use small population size and
-#'                   and a small number of generations.
 #' @param performanceMeasure  Default \code{NA}: Return named list.
 #'                    Available: "Online" and "Offline": 
 #'                    Return value of measure. 
+#' @param pnames     Vector of parameter names.
+#' @param bitlength  Vector of bitlengths.
+#' @param lb         Vector of lower bounds.
+#' @param ub         Vector of upper bounds.
+#' @param stepsT     Length of best fitness vectors. Should match the number of generations.
 #' @param terminationCondition    Default: "AbsoluteError". 
 #'                   See \code{xega::xegaRun()}.
 #' @param terminationEps    Default: 0.01 
@@ -45,6 +49,7 @@
 #'                   of inner and outer GA on console.
 #' @param log        Default: \code{0}. 
 #'                   Print console log.
+#' @param path       Path for result files. Default: \code{""}
 #'
 #' @return A meta GA problem environment which is  list of functions
 #'         from which we can dispatch the following functions:
@@ -65,45 +70,49 @@
 #' @examples
 #' EnvList<-list()
 #' EnvList[[1]]<-rndPerformance(smoofWrapperFactory(makeShekelFunction(5)), trials=10, repExp=5)
-#' UPC<-UPCmetaGAFactory(EnvList, "P5Shekel5d", repExp=1, example=TRUE, log=1)
+#' pn<-c("popsize", "generations", "mutrate", "bitmutrate",  
+#'       "crossrate", "uCrossSwap")
+#' bl<-rep(64,6); lb<-c(rep(10, 2), rep(0.00001, 4)); ub<-c(rep(15, 2), rep(1.0, 4))
+#' stepsT<-15
+#' path<-xegaTmpDir()
+#' UPC<-UPCmetaGAFactory(EnvList, name="UPCShekel5d", 
+#'      pnames=pn, bitlength=bl, lb=lb, ub=ub, stepsT=stepsT,
+#'      repExp=1, log=1, path=path)
 #' a<-xegaRun(penv=UPC, algorithm="sga", max=TRUE, 
 #'            popsize=2, generations=2, 
-#'            executionModel="Sequential", profile=TRUE, verbose=0)
-#' # EnvList[[2]]<-rndPerformance(smoofWrapperFactory(makeSchwefelFunction(2)))
-#' # P6<-P5metaGAFactory(EnvList, "P6Shekel2dSchwefel2d", repExp=1, example=TRUE,
-#' #                    verbose=FALSE)
-#' # b<-xegaRun(penv=P6, algorithm="sga", max=TRUE, 
-#' #           popsize=2, generations=2, 
-#' #           executionModel="Sequential", profile=TRUE)
+#'            executionModel="Sequential", profile=TRUE, verbose=0, 
+#'            path=path)
 #'
 #' @importFrom xegaSelectGene parm 
 #' @importFrom xega xegaRun 
 #' @export
-UPCmetaGAFactory<-function(envList, name="UPC",
-             repExp=100, executionModel="Sequential",
+UPCmetaGAFactory<-function(envList, 
+             envWeights=rep(1.0,1), 
+             name="UPC",
+             repExp=100, 
+             executionModel="Sequential",
              evalmethod="Deterministic",
              performanceMeasure="Offline", 
-             terminationCondition="AbsoluteError", terminationEps=0.01,
-             example=FALSE, verbose=0, log=0)
+             pnames,
+             bitlength,
+             lb,
+             ub,
+             stepsT,
+             terminationCondition="AbsoluteError", 
+             terminationEps=0.01,
+             verbose=0, 
+             log=0,
+             path="")
 {
 self<-list()
-self$name<-xegaSelectGene::parm(paste("metaGA", name))
-self$bitlength<-function() {rep(64,6)}
+self$name<-xegaSelectGene::parm(paste("metaGA", name, sep=""))
+self$pnames<-xegaSelectGene::parm(pnames)
+self$bitlength<-xegaSelectGene::parm(bitlength)
 self$genelength<-function() {sum(self$bitlength())}
-self$pnames<-function() {
-     c("popsize", "generations", "mutrate", 
-       "bitmutrate", "crossrate", "uCrossSwap")}
-self$lb<-function() {c(10, 10, 0.001, 0.0001, 0.001, 0.0001)}
-if (example)
- {self$ub<-function() {c(15, 15, 1.0, 0.5, 0.5, 0.5)}
-  self$repExp<-xegaSelectGene::parm(repExp)
-  self$stepsT<-xegaSelectGene::parm(15)
- }
-else
- {self$ub<-function() {c(1000, 1000, 1.0, 0.5, 0.5, 0.5)}
-  self$repExp<-xegaSelectGene::parm(repExp)
-  self$stepsT<-xegaSelectGene::parm(1000)
-}
+self$lb<-xegaSelectGene::parm(lb)
+self$ub<-xegaSelectGene::parm(ub)
+self$stepsT<-xegaSelectGene::parm(stepsT)
+self$repExp<-xegaSelectGene::parm(repExp)
 self$verbose=xegaSelectGene::parm(verbose)
 self$log=xegaSelectGene::parm(log)
 self$executionModel<-xegaSelectGene::parm(executionModel)
@@ -111,10 +120,39 @@ self$evalmethod<-xegaSelectGene::parm(evalmethod)
 self$terminationCondition<-xegaSelectGene::parm(terminationCondition)
 self$terminationEps<-xegaSelectGene::parm(terminationEps)
 self$performanceMeasure<-xegaSelectGene::parm(performanceMeasure)
+self$path<-xegaSelectGene::parm(path)
 
 ###
-
 self$envList=envList
+envW<-envWeights
+if (all(envWeights==1.0)) {envW<-rep(1.0, length(envList))}
+self$envWeights=xegaSelectGene::parm(envW)
+t<-self$envWeights()
+
+### get a solution of the inner GA.
+penv<-self$envList[[1]]
+self$InnerGASolution<-xega::xegaRun(
+             penv=penv,
+             algorithm="sga",
+             evalmethod=self$evalmethod(),
+             elitist=TRUE,
+             # hyper paramerers start
+             popsize=as.integer(self$lb()[1]),
+             generations=as.integer(self$lb()[2]),
+             mutrate=self$lb()[3],
+             bitmutrate=self$lb()[4],
+             crossrate=self$lb()[5],
+             uCrossSwap=self$lb()[6],
+             crossover="UPCross2Gene", 
+             # hyper parameters end
+             max=penv$max(), evalrep=self$repExp(),
+             terminationCondition=self$terminationCondition(),
+             terminationEps=self$terminationEps(),
+             verbose=self$verbose(),
+             executionModel=self$executionModel(),
+             path=self$path()
+               )
+
 ### fitness function.
 self$f=function(parm, gene=0, lF=0) 
 	{
@@ -126,67 +164,54 @@ self$f=function(parm, gene=0, lF=0)
 		crossrate=parm[5]
                 uCrossSwap=parm[6]
 
-	FitVec<-rep(0, length(self$envList))
-	TimeVec<-rep(0, length(self$envList))
-	RndPerfVec<-rep(0, length(self$envList))
-	GAPerfVec<-rep(0, length(self$envList))
-	GAfitVec<-rep(0, length(self$envList))
-	GAstdVec<-rep(0, length(self$envList))
-	gOptVec<-rep(0, length(self$envList))
-	penvVec<-rep(NA, length(self$envList))
+      metaGAstats<-InitMetaGAStats(self$envList, self$envWeights())
+
 	for (j in 1:length(self$envList))
 	{ penv<-self$envList[[j]] 
-        #  cat("calling xegaRun with penv", penv$name(),"\n")
 	  solution<-xega::xegaRun(
              penv=penv,	algorithm="sga", 
              evalmethod=self$evalmethod(),
              elitist=TRUE, 
+             ### Hyperparameter start.   
 	     generations=generations, popsize=popsize, 
-             crossover="UPCross2Gene",
-	     crossrate=crossrate, uCrossSwap=uCrossSwap,
 	     mutrate=mutrate, bitmutrate=bitmutrate,
+	     crossrate=crossrate, uCrossSwap=uCrossSwap,
+             crossover="UPCross2Gene",
+             ### Hyperparameters end.
 	     max=penv$max(), evalrep=self$repExp(), 
              terminationCondition=self$terminationCondition(), 
              terminationEps=self$terminationEps(),
              verbose=self$verbose(), 
-             executionModel=self$executionModel()
+             executionModel=self$executionModel(),
+             path=lF$path()
                )
-        #  cat("Return from xegaRun with penv", penv$name(),"\n")
-          RndPerf<-penv$ERndBest()
-          GAPerf<-GAPerformance(solution, stepsT=self$stepsT(), 
-                   performanceMeasure=self$performanceMeasure()) 
-          RndPerfVec[j]<-RndPerf 
-          GAfitVec[j]<-solution$solution$genotype$fit
-          if (!is.null(solution$solution$genotype$sigma)) 
-                  {GAstdVec[j]<-solution$solution$genotype$sigma}
-          GAPerfVec[j]<-GAPerf 
-          gOptVec[j]<-penv$globalOptimum()$value
-          penvVec[j]<-penv$name()
-          TimeVec[j]<-solution$timer$tMainLoop
-          FitVec[j]<-signedL2Dist(GAPerf, RndPerf)    
+
+                  metaGAstats<-UpdateMetaGAStats(
+                         row=j,
+                         metaGAstats=metaGAstats,
+                         penv=penv,
+                         solution=solution,
+                         stepsT=self$stepsT(),
+                   performanceMeasure=self$performanceMeasure())
         }
 
-        GAtime<-sum(TimeVec)
-        GAfit<-sum(FitVec)
+        GAtime<-sum(metaGAstats$Time)
+        GAfit<-sum(metaGAstats$Fit)
 
 if (self$log()==1)
 {
-        df<-data.frame(penvVec, gOptVec, GAfitVec, GAstdVec, 
-                       GAPerfVec, RndPerfVec, FitVec, TimeVec)
-
-#        cat("Path:\n")
-#        cat("UPC$f Path:", lF$path(),  "\n")
-               
-
-        metaGAReporter(name=self$name(), parm=parm, GAfit=GAfit, 
-                             GAtime=GAtime, experiment=df, lF=lF)
-}
+ metaGAReporter(name=self$name(), parm=parm, GAfit=GAfit, GAtime=GAtime, 
+                experiment=metaGAstats, lF=lF) }
 
 return(GAfit)
 }
 #### end of fitness
-
-
+### force promises.
+t<-self$name(); t<-self$pnames(); t<-self$bitlength(); t<-self$genelength();
+t<-self$lb(); t<-self$ub(); t<-self$stepsT(); t<-self$repExp();
+t<-self$verbose(); t<-self$log(); t<-self$executionModel();
+t<-self$evalmethod(); t<-self$terminationCondition(); t<-self$terminationEps();
+t<-self$path()
 return(self)
 }
 

@@ -1,43 +1,95 @@
 
 library(xegaEnvMeta)
 
-source("DeJongF1.R")
-source("DeJongF2.R")
-source("DeJongF3.R")
-source("DeJongF4.R")
-source("DeJongF5.R")
+### Large/Small.
+stochastic<-FALSE
+production<-FALSE
 
-#  Empty environment list
-EnvList<-list()
-#  Environment[1]: generate smoof-function and add Rnd performance measures for 1000 trials, 100 repetitions. 
-EnvList[[1]]<-rndPerformance(DeJongF1Factory(), 
-                   trials=1000, repExp=100, executionModel="MultiCore")
-EnvList[[2]]<-rndPerformance(DeJongF2Factory(), 
-                   trials=1000, repExp=100, executionModel="MultiCore")
-EnvList[[3]]<-rndPerformance(DeJongF3Factory(), 
-                   trials=1000, repExp=100, executionModel="MultiCore")
-EnvList[[4]]<-rndPerformance(DeJongF4Factory(), 
-                   trials=1000, repExp=100, executionModel="MultiCore")
-EnvList[[5]]<-rndPerformance(DeJongF5Factory(), 
-                   trials=1000, repExp=100, executionModel="MultiCore")
+### Define experiment
 
-# Generate Factory for 1 run of a GA per parameter set, 35 repetitions.
-P5<-P5metaGAFactory(EnvList, "P5DeJong1975", 
-         repExp=2, example=TRUE, executionModel="Sequential", 
-         terminationCondition="AbsoluteError", terminationEps=0.1, log=1)
-# Run GA for finding the best parameter set. 
-a<-xegaRun(penv=P5, algorithm="sga", max=TRUE, 
-         #   popsize=50, generations=20, evalrep=10, 
-             popsize=5, generations=2, evalrep=2, 
-            executionModel="MultiCoreHet", profile=TRUE, verbose=3,
-            logevals=TRUE, batch=TRUE)
+if (!production)
+{ # test
+rndtrials<-10
+rndrepExp<-10
+popsize<-3
+generations<-2
+evalrep<-2
+pn<-c("popsize", "generations", "mutrate", "bitmutrate", "crossrate")
+bl<-c(rep(10,2), rep(8,3)); lb<-c(rep(10, 2), rep(0.00001, 3)); ub<-c(rep(15, 2), rep(1.0, 3))
+stepsT<-15
+robustReps<-16
+path<-"P5test/"
+}
 
-cat("P5metaGA finished\n")
+if (production)
+{ # production
+rndtrials<-1000
+rndrepExp<-100
+popsize<-100
+generations<-30
+evalrep<-1
+pn<-c("popsize", "generations", "mutrate", "bitmutrate", "crossrate")
+bl<-c(rep(10,2), rep(8,3)); lb<-c(rep(10, 2), rep(0.00001, 3)); ub<-c(rep(1000, 2), rep(1.0, 3))
+stepsT<-1000
+robustReps<-200
+path<-"P5prod/"
+}
 
-details<-metaGApostProcessing(solution=a)
+### Build environment list
 
-cat("P5 The 10 best results:\n")
-print(details[1:10,])
+envs<-DeJongEnvs(rndtrials=rndtrials, rndrepExp=rndrepExp, stochastic)
+EnvList<-envs$EnvList; EnvWeights<-envs$EnvWeights
 
-cat("DeJong (P5) 1975 finished!\n")
+### Run meta GA
+
+rMeta<-metaGARun(
+       name="P5DeJong1975",
+       metaGAFactory=P5metaGAFactory,
+       EnvList=EnvList,
+       EnvWeights=EnvWeights,
+       pnames=pn,
+       bitlength=bl,
+       lb=lb,
+       ub=ub,
+       stepsT=stepsT,
+       popsize=popsize,
+       generations=generations,
+       evalrep=evalrep,
+       path=path
+       )
+
+metaGAExperiment(rMeta=rMeta)
+metaGAkBest(rMeta=rMeta, k=5)
+cat("\n DeJong (P5) 1975 finished!\n")
+
+### Run robustness check of best solution.
+
+rMetaRobust<-metaGARobust(
+      name="P5DeJong1975RobustOpt",
+      metaGAFactory=P5metaGAFactory, 
+      rMeta=rMeta,
+      reps=robustReps,
+      path=path
+      )
+
+
+metaGAhowRobust(rMeta=rMetaRobust)
+metaGAtables(rMeta=rMetaRobust, table="Summary")
+metaGAtables(rMeta=rMetaRobust, table="Error")
+### Run robustness check of 5th best solution.
+
+rMetaRobust5<-metaGARobust(
+      name="P5DeJong1975RobustOpt",
+      metaGAFactory=P5metaGAFactory, 
+      rMeta=rMeta,
+      reps=robustReps,
+      hyperIndex=5,
+      path=path
+      )
+
+metaGAhowRobust(rMeta=rMetaRobust5)
+metaGAtables(rMeta=rMetaRobust5, table="MetaGA")
+metaGAtables(rMeta=rMetaRobust5, table="Resources")
+
+### TBD Evaluation needs a second list envs: envListEval.
 

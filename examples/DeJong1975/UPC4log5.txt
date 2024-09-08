@@ -1,0 +1,379 @@
+Best Solution in Iteration: 1 
+Max(fit):  72.09692 No. solutions:  1 Indices of best genes:  49 
+Best Solution in Iteration: 2 
+Max(fit):  72.21859 No. solutions:  1 Indices of best genes:  11 
+Best Solution in Iteration: 3 
+Max(fit):  72.05846 No. solutions:  1 Indices of best genes:  12 
+Best Solution in Iteration: 4 
+Max(fit):  72.13958 No. solutions:  1 Indices of best genes:  21 
+Best Solution in Iteration: 5 
+Max(fit):  72.0251 No. solutions:  1 Indices of best genes:  1 
+Best Solution in Iteration: 6 
+Max(fit):  71.80847 No. solutions:  1 Indices of best genes:  1 
+Best Solution in Iteration: 7 
+Max(fit):  72.03611 No. solutions:  1 Indices of best genes:  22 
+Best Solution in Iteration: 8 
+Max(fit):  72.21767 No. solutions:  1 Indices of best genes:  19 
+Best Solution in Iteration: 9 
+Max(fit):  71.87797 No. solutions:  1 Indices of best genes:  49 
+Best Solution in Iteration: 10 
+Max(fit):  72.03813 No. solutions:  1 Indices of best genes:  1 
+Best Solution in Iteration: 11 
+Max(fit):  72.63186 No. solutions:  1 Indices of best genes:  50 
+Best Solution in Iteration: 12 
+Max(fit):  72.16395 No. solutions:  1 Indices of best genes:  1 
+Best Solution in Iteration: 13 
+Max(fit):  72.01783 No. solutions:  1 Indices of best genes:  16 
+Best Solution in Iteration: 14 
+Max(fit):  72.33229 No. solutions:  1 Indices of best genes:  1 
+Best Solution in Iteration: 15 
+Max(fit):  72.07659 No. solutions:  1 Indices of best genes:  16 
+Best Solution in Iteration: 16 
+Max(fit):  72.20099 No. solutions:  1 Indices of best genes:  1 
+Best Solution in Iteration: 17 
+Max(fit):  72.05631 No. solutions:  1 Indices of best genes:  20 
+Best Solution in Iteration: 18 
+Max(fit):  72.05821 No. solutions:  1 Indices of best genes:  39 
+Best Solution in Iteration: 19 
+Max(fit):  71.93218 No. solutions:  1 Indices of best genes:  47 
+Best Solution in Iteration: 20 
+Max(fit):  72.24732 No. solutions:  1 Indices of best genes:  43 
+Best Solution in Iteration: 20 
+Max(fit):  71.76038 No. solutions:  1 Indices of best genes:  21 
+
+ meta GA finished
+
+ meta GA post processing finished!
+The meta GA experiment  metaGAUPC4DeJong1975  ( Do Sep 05 10:34:13 2024 ):
+
+ The environments and the performance of random search:
+
+  Environment Max! gOpt Trials Rep     rndBest   E(rndBest) sigma(RndBest)
+1    DeJongF1    0    0   1000 100   0.3204592   0.38216664     0.26081536
+2    DeJongF2    0    0   1000 100   0.1100603   0.05724676     0.05633006
+3    DeJongF3    0  -30   1000 100 -22.0000000 -21.97000000     1.52722763
+4    DeJongF5    0    1   1000 100   3.0116580   3.92979358     2.93201917
+
+ The hyper parameter space:
+
+       MetaEnvironment  Parameters Lower Upper Bits
+1 metaGAUPC4DeJong1975     popsize 1e+01  1000   10
+2 metaGAUPC4DeJong1975 generations 1e+01  1000   10
+3 metaGAUPC4DeJong1975     mutrate 1e-05     1    8
+4 metaGAUPC4DeJong1975  bitmutrate 1e-05     1    8
+5 metaGAUPC4DeJong1975   crossrate 1e-05     1    8
+6 metaGAUPC4DeJong1975  uCrossSwap 1e-05     1    8
+
+ The parameters of the  meta GA:
+
+   Meta GA Parameters               Values
+1                penv metaGAUPC4DeJong1975
+2           algorithm                  sga
+3                 max                 TRUE
+4             popsize                   50
+5         generations                   20
+6           crossrate                  0.2
+7             mutrate                    1
+8          bitmutrate                 0.05
+9             elitist                 TRUE
+10            evalrep                    1
+11      excutionModel         MultiCoreHet
+The best  5 results of meta-GA experiment  metaGAUPC4DeJong1975 
+       Fit sigma(Fit)        t  sigma(t) Obs  popsize generations    mutrate  bitmutrate crossrate uCrossSwap
+1 72.13039  0.5190765 6.638577 0.6752572   3 896.4516    559.6774 0.16079271 0.003931529 0.6745131  0.2745171
+2 72.11931         NA 5.118922        NA   1 809.3548    293.5484 0.05491141 0.011774588 0.9960785  0.1843219
+3 72.07778         NA 5.459918        NA   1 803.5484    555.8065 0.13334200 0.007853059 0.6823561  0.1529496
+4 72.03081  0.1180807 5.500390 1.0230933   4 841.2903    784.1935 0.00001000 0.003931529 0.6745131  0.2745171
+5 72.01811         NA 3.349807        NA   1 310.9677    317.7419 0.06275447 0.047068353 0.6431408  0.2705955
+
+ DeJong (UPC) 1975 finished!
+Best Solution in Iteration: 1 
+Max(fit):  72.48145 No. solutions:  1 Indices of best genes:  152 
+Fitness Min: 70.48143  Q1: 71.58957  Mean: 71.77474  Q3: 71.9964  Max: 72.48145 
+Fitness: 72.48145 Value of Phenotype: 72.48145 
+Phenotype:
+[1] 910.96774194 785.16129032   0.05883294   0.01177459   0.98039235
+[6]   0.15294965
+
+ Robustness Analysis of  UPC4DeJong1975RobustOpt finished!
+
+ Analysis of hyper parameter point:
+ 910.9677 785.1613 0.05883294 0.01177459 0.9803924 0.1529496 
+
+       Fit sigma(Fit)        t sigma(t) Obs  popsize generations    mutrate bitmutrate crossrate uCrossSwap
+1 71.77474  0.3154634 10.70684 16.57941 200 910.9677    785.1613 0.05883294 0.01177459 0.9803924  0.1529496
+           Fit      Time  stdTimeVec     RndPerf      GAPerf        GAfit      GAstd gOpt early gen   agen  feval   afeval    penvn envW
+1  0.103617443 0.9647586  0.57031877 -0.38216664 -0.06135321   0.06047267 0.02657146    0   200 785  6.005 715260  5464.55 DeJongF1    1
+2  0.001126545 0.2734825  0.06222057 -0.05724676 -0.03073721   0.03070527 0.02328413    0   200 785  2.080 715260  1892.80 DeJongF2    1
+3 63.239895470 6.0568728  1.55014500 21.97000000 29.92234000 -30.00000000 0.00000000  -30   200 785 30.880 715260 28100.80 DeJongF3    1
+4  8.430105511 3.4117302 16.39163912 -3.92979358 -1.02656838   1.02243956 0.03692919    1   196 785 19.105 715260 17385.55 DeJongF5    1
+  Obs  OPT      L1err       L2err   L1errstd Psuccess     terminate Eps   SSshare
+1 200 Min! 0.06047267 0.004359456 0.02657146     1.00 AbsoluteError 0.1 0.5660021
+2 200 Min! 0.03070527 0.001482254 0.02328413     1.00 AbsoluteError 0.1 0.1924457
+3 200 Min! 0.00000000 0.000000000 0.00000000     1.00 AbsoluteError 0.1 0.0000000
+4 200 Min! 0.02340856 0.001860480 0.03631963     0.98 AbsoluteError 0.1 0.2415521
+  Opt!        f w gOpt  E(fit) [GA] sigma(fit) [GA]      E(t)    sigma(t)   n
+1 Min! DeJongF1 1    0   0.06047267      0.02657146 0.9647586  0.57031877 200
+2 Min! DeJongF2 1    0   0.03070527      0.02328413 0.2734825  0.06222057 200
+3 Min! DeJongF3 1  -30 -30.00000000      0.00000000 6.0568728  1.55014500 200
+4 Min! DeJongF5 1    1   1.02243956      0.03692919 3.4117302 16.39163912 200
+  Opt!        f w gOpt  E(fit) [GA] E(fit) [Meta] E(RndPerformance) E(GAPerformance)   n
+1 Min! DeJongF1 1    0   0.06047267   0.103617443       -0.38216664      -0.06135321 200
+2 Min! DeJongF2 1    0   0.03070527   0.001126545       -0.05724676      -0.03073721 200
+3 Min! DeJongF3 1  -30 -30.00000000  63.239895470       21.97000000      29.92234000 200
+4 Min! DeJongF5 1    1   1.02243956   8.430105511       -3.92979358      -1.02656838 200
+  Opt!        f w gOpt  E(fit) [GA] P(d(gOpt, GAopt)<Eps)   E(L1err) sigma(L1err)    E(L2err) share(SS)
+1 Min! DeJongF1 1    0   0.06047267                  1.00 0.06047267   0.02657146 0.004359456 0.5660021
+2 Min! DeJongF2 1    0   0.03070527                  1.00 0.03070527   0.02328413 0.001482254 0.1924457
+3 Min! DeJongF3 1  -30 -30.00000000                  1.00 0.00000000   0.00000000 0.000000000 0.0000000
+4 Min! DeJongF5 1    1   1.02243956                  0.98 0.02340856   0.03631963 0.001860480 0.2415521
+  Opt!        f w gOpt  E(fit) [GA] P(d(gOpt, GAopt)<Eps) Eps E(actual fevals) Max(fevals) E(actual generations)
+1 Min! DeJongF1 1    0   0.06047267                  1.00 0.1          5464.55      715260                 6.005
+2 Min! DeJongF2 1    0   0.03070527                  1.00 0.1          1892.80      715260                 2.080
+3 Min! DeJongF3 1  -30 -30.00000000                  1.00 0.1         28100.80      715260                30.880
+4 Min! DeJongF5 1    1   1.02243956                  0.98 0.1         17385.55      715260                19.105
+Best Solution in Iteration: 1 
+Max(fit):  72.42401 No. solutions:  1 Indices of best genes:  189 
+Fitness Min: 69.76182  Q1: 71.51358  Mean: 71.68438  Q3: 71.93676  Max: 72.42401 
+Fitness: 72.42401 Value of Phenotype: 72.42401 
+Phenotype:
+[1] 8.964516e+02 5.596774e+02 1.607927e-01 3.931529e-03 6.745131e-01
+[6] 2.745171e-01
+
+ Robustness Analysis of  UPC4DeJong1975RobustOpt1 finished!
+
+
+ Analyses of  UPC4DeJong1975RobustOpt1 
+
+
+ Analysis of hyper parameter point:
+ 896.4516 559.6774 0.1607927 0.003931529 0.6745131 0.2745171 
+
+       Fit sigma(Fit)        t sigma(t) Obs  popsize generations   mutrate  bitmutrate crossrate uCrossSwap
+1 71.68438  0.3883187 15.23188 29.47817 200 896.4516    559.6774 0.1607927 0.003931529 0.6745131  0.2745171
+           Fit      Time  stdTimeVec     RndPerf      GAPerf        GAfit      GAstd gOpt early gen   agen  feval   afeval    penvn envW
+1  0.103496355 0.9802922  0.58923581 -0.38216664 -0.06152614   0.06059454 0.02629632    0   200 559  6.245 501760  5595.52 DeJongF1    1
+2  0.001311694 0.2672593  0.03748171 -0.05724676 -0.02801390   0.02797428 0.02463167    0   200 559  2.060 501760  1845.76 DeJongF2    1
+3 63.202049220 5.8042291  1.44834082 21.97000000 29.91996000 -30.00000000 0.00000000  -30   200 559 32.235 501760 28882.56 DeJongF3    1
+4  8.377524765 8.1801006 29.45540220 -3.92979358 -1.03597497   1.03128442 0.05598538    1   188 559 36.765 501760 32941.44 DeJongF5    1
+  Obs  OPT      L1err       L2err   L1errstd Psuccess     terminate Eps   SSshare
+1 200 Min! 0.06059454 0.004359738 0.02629632     1.00 AbsoluteError 0.1 0.4429102
+2 200 Min! 0.02797428 0.001386246 0.02463167     1.00 AbsoluteError 0.1 0.1408301
+3 200 Min! 0.00000000 0.000000000 0.00000000     1.00 AbsoluteError 0.1 0.0000000
+4 200 Min! 0.03215893 0.004097406 0.05548515     0.94 AbsoluteError 0.1 0.4162596
+  Opt!        f w gOpt  E(fit) [GA] sigma(fit) [GA]      E(t)    sigma(t)   n
+1 Min! DeJongF1 1    0   0.06059454      0.02629632 0.9802922  0.58923581 200
+2 Min! DeJongF2 1    0   0.02797428      0.02463167 0.2672593  0.03748171 200
+3 Min! DeJongF3 1  -30 -30.00000000      0.00000000 5.8042291  1.44834082 200
+4 Min! DeJongF5 1    1   1.03128442      0.05598538 8.1801006 29.45540220 200
+  Opt!        f w gOpt  E(fit) [GA] E(fit) [Meta] E(RndPerformance) E(GAPerformance)   n
+1 Min! DeJongF1 1    0   0.06059454   0.103496355       -0.38216664      -0.06152614 200
+2 Min! DeJongF2 1    0   0.02797428   0.001311694       -0.05724676      -0.02801390 200
+3 Min! DeJongF3 1  -30 -30.00000000  63.202049220       21.97000000      29.91996000 200
+4 Min! DeJongF5 1    1   1.03128442   8.377524765       -3.92979358      -1.03597497 200
+  Opt!        f w gOpt  E(fit) [GA] P(d(gOpt, GAopt)<Eps)   E(L1err) sigma(L1err)    E(L2err) share(SS)
+1 Min! DeJongF1 1    0   0.06059454                  1.00 0.06059454   0.02629632 0.004359738 0.4429102
+2 Min! DeJongF2 1    0   0.02797428                  1.00 0.02797428   0.02463167 0.001386246 0.1408301
+3 Min! DeJongF3 1  -30 -30.00000000                  1.00 0.00000000   0.00000000 0.000000000 0.0000000
+4 Min! DeJongF5 1    1   1.03128442                  0.94 0.03215893   0.05548515 0.004097406 0.4162596
+  Opt!        f w gOpt  E(fit) [GA] P(d(gOpt, GAopt)<Eps) Eps E(actual fevals) Max(fevals) E(actual generations)
+1 Min! DeJongF1 1    0   0.06059454                  1.00 0.1          5595.52      501760                 6.245
+2 Min! DeJongF2 1    0   0.02797428                  1.00 0.1          1845.76      501760                 2.060
+3 Min! DeJongF3 1  -30 -30.00000000                  1.00 0.1         28882.56      501760                32.235
+4 Min! DeJongF5 1    1   1.03128442                  0.94 0.1         32941.44      501760                36.765
+Best Solution in Iteration: 1 
+Max(fit):  72.51095 No. solutions:  1 Indices of best genes:  15 
+Fitness Min: 69.55031  Q1: 71.64783  Mean: 71.74538  Q3: 71.96733  Max: 72.51095 
+Fitness: 72.51095 Value of Phenotype: 72.51095 
+Phenotype:
+[1] 809.35483871 293.54838710   0.05491141   0.01177459   0.99607847
+[6]   0.18432188
+
+ Robustness Analysis of  UPC4DeJong1975RobustOpt2 finished!
+
+
+ Analyses of  UPC4DeJong1975RobustOpt2 
+
+
+ Analysis of hyper parameter point:
+ 809.3548 293.5484 0.05491141 0.01177459 0.9960785 0.1843219 
+
+       Fit sigma(Fit)        t sigma(t) Obs  popsize generations    mutrate bitmutrate crossrate uCrossSwap
+1 71.74538  0.4111935 12.26506 17.35198 200 809.3548    293.5484 0.05491141 0.01177459 0.9960785  0.1843219
+           Fit      Time  stdTimeVec     RndPerf      GAPerf        GAfit      GAstd gOpt early gen   agen  feval    afeval    penvn envW
+1  0.105094288 0.9862305  0.53574376 -0.38216664 -0.05911294   0.05805008 0.02721908    0   200 293  6.530 237846  5282.770 DeJongF1    1
+2  0.001217746 0.2461575  0.04709376 -0.05724676 -0.03010514   0.03006594 0.02536535    0   200 293  2.075 237846  1678.675 DeJongF2    1
+3 63.246261180 5.3595133  1.28702718 21.97000000 29.92274000 -30.00000000 0.00000000  -30   200 293 30.005 237846 24274.045 DeJongF3    1
+4  8.392806778 5.6731582 17.30872838 -3.92979358 -1.03341781   1.02829328 0.05985421    1   185 293 25.205 237846 20390.845 DeJongF5    1
+  Obs  OPT      L1err       L2err   L1errstd Psuccess     terminate Eps   SSshare
+1 200 Min! 0.05805008 0.004106986 0.02721908    1.000 AbsoluteError 0.1 0.4100321
+2 200 Min! 0.03006594 0.001544145 0.02536535    1.000 AbsoluteError 0.1 0.1541639
+3 200 Min! 0.00000000 0.000000000 0.00000000    1.000 AbsoluteError 0.1 0.0000000
+4 200 Min! 0.02950977 0.004365124 0.05926092    0.925 AbsoluteError 0.1 0.4358040
+  Opt!        f w gOpt  E(fit) [GA] sigma(fit) [GA]      E(t)    sigma(t)   n
+1 Min! DeJongF1 1    0   0.05805008      0.02721908 0.9862305  0.53574376 200
+2 Min! DeJongF2 1    0   0.03006594      0.02536535 0.2461575  0.04709376 200
+3 Min! DeJongF3 1  -30 -30.00000000      0.00000000 5.3595133  1.28702718 200
+4 Min! DeJongF5 1    1   1.02829328      0.05985421 5.6731582 17.30872838 200
+  Opt!        f w gOpt  E(fit) [GA] E(fit) [Meta] E(RndPerformance) E(GAPerformance)   n
+1 Min! DeJongF1 1    0   0.05805008   0.105094288       -0.38216664      -0.05911294 200
+2 Min! DeJongF2 1    0   0.03006594   0.001217746       -0.05724676      -0.03010514 200
+3 Min! DeJongF3 1  -30 -30.00000000  63.246261180       21.97000000      29.92274000 200
+4 Min! DeJongF5 1    1   1.02829328   8.392806778       -3.92979358      -1.03341781 200
+  Opt!        f w gOpt  E(fit) [GA] P(d(gOpt, GAopt)<Eps)   E(L1err) sigma(L1err)    E(L2err) share(SS)
+1 Min! DeJongF1 1    0   0.05805008                 1.000 0.05805008   0.02721908 0.004106986 0.4100321
+2 Min! DeJongF2 1    0   0.03006594                 1.000 0.03006594   0.02536535 0.001544145 0.1541639
+3 Min! DeJongF3 1  -30 -30.00000000                 1.000 0.00000000   0.00000000 0.000000000 0.0000000
+4 Min! DeJongF5 1    1   1.02829328                 0.925 0.02950977   0.05926092 0.004365124 0.4358040
+  Opt!        f w gOpt  E(fit) [GA] P(d(gOpt, GAopt)<Eps) Eps E(actual fevals) Max(fevals) E(actual generations)
+1 Min! DeJongF1 1    0   0.05805008                 1.000 0.1         5282.770      237846                 6.530
+2 Min! DeJongF2 1    0   0.03006594                 1.000 0.1         1678.675      237846                 2.075
+3 Min! DeJongF3 1  -30 -30.00000000                 1.000 0.1        24274.045      237846                30.005
+4 Min! DeJongF5 1    1   1.02829328                 0.925 0.1        20390.845      237846                25.205
+Best Solution in Iteration: 1 
+Max(fit):  72.47991 No. solutions:  1 Indices of best genes:  151 
+Fitness Min: 70.38358  Q1: 71.48025  Mean: 71.64488  Q3: 71.869  Max: 72.47991 
+Fitness: 72.47991 Value of Phenotype: 72.47991 
+Phenotype:
+[1] 8.035484e+02 5.558065e+02 1.333420e-01 7.853059e-03 6.823561e-01
+[6] 1.529496e-01
+
+ Robustness Analysis of  UPC4DeJong1975RobustOpt3 finished!
+
+
+ Analyses of  UPC4DeJong1975RobustOpt3 
+
+
+ Analysis of hyper parameter point:
+ 803.5484 555.8065 0.133342 0.007853059 0.6823561 0.1529496 
+
+       Fit sigma(Fit)        t sigma(t) Obs  popsize generations  mutrate  bitmutrate crossrate uCrossSwap
+1 71.64488  0.3771214 12.66475 23.58911 200 803.5484    555.8065 0.133342 0.007853059 0.6823561  0.1529496
+           Fit      Time  stdTimeVec     RndPerf      GAPerf        GAfit      GAstd gOpt early gen   agen  feval    afeval    penvn envW
+1  0.106159377 0.9702080  0.47960001 -0.38216664 -0.05746126   0.05625001 0.02718109    0   200 555  6.680 446468  5364.040 DeJongF1    1
+2  0.001068825 0.2453124  0.04338348 -0.05724676 -0.03375706   0.03371366 0.02697280    0   200 555  2.075 446468  1666.225 DeJongF2    1
+3 63.152744595 5.1543089  1.35921949 21.97000000 29.91685500 -30.00000000 0.00000000  -30   200 555 31.640 446468 25406.920 DeJongF3    1
+4  8.384905438 6.2949210 23.52965527 -3.92979358 -1.03455317   1.02878936 0.04794528    1   190 555 31.640 446468 25406.920 DeJongF5    1
+  Obs  OPT      L1err       L2err   L1errstd Psuccess     terminate Eps   SSshare
+1 200 Min! 0.05625001 0.003899181 0.02718109     1.00 AbsoluteError 0.1 0.4393062
+2 200 Min! 0.03371366 0.001860505 0.02697280     1.00 AbsoluteError 0.1 0.2096162
+3 200 Min! 0.00000000 0.000000000 0.00000000     1.00 AbsoluteError 0.1 0.0000000
+4 200 Min! 0.02984154 0.003116084 0.04729429     0.95 AbsoluteError 0.1 0.3510775
+  Opt!        f w gOpt  E(fit) [GA] sigma(fit) [GA]      E(t)    sigma(t)   n
+1 Min! DeJongF1 1    0   0.05625001      0.02718109 0.9702080  0.47960001 200
+2 Min! DeJongF2 1    0   0.03371366      0.02697280 0.2453124  0.04338348 200
+3 Min! DeJongF3 1  -30 -30.00000000      0.00000000 5.1543089  1.35921949 200
+4 Min! DeJongF5 1    1   1.02878936      0.04794528 6.2949210 23.52965527 200
+  Opt!        f w gOpt  E(fit) [GA] E(fit) [Meta] E(RndPerformance) E(GAPerformance)   n
+1 Min! DeJongF1 1    0   0.05625001   0.106159377       -0.38216664      -0.05746126 200
+2 Min! DeJongF2 1    0   0.03371366   0.001068825       -0.05724676      -0.03375706 200
+3 Min! DeJongF3 1  -30 -30.00000000  63.152744595       21.97000000      29.91685500 200
+4 Min! DeJongF5 1    1   1.02878936   8.384905438       -3.92979358      -1.03455317 200
+  Opt!        f w gOpt  E(fit) [GA] P(d(gOpt, GAopt)<Eps)   E(L1err) sigma(L1err)    E(L2err) share(SS)
+1 Min! DeJongF1 1    0   0.05625001                  1.00 0.05625001   0.02718109 0.003899181 0.4393062
+2 Min! DeJongF2 1    0   0.03371366                  1.00 0.03371366   0.02697280 0.001860505 0.2096162
+3 Min! DeJongF3 1  -30 -30.00000000                  1.00 0.00000000   0.00000000 0.000000000 0.0000000
+4 Min! DeJongF5 1    1   1.02878936                  0.95 0.02984154   0.04729429 0.003116084 0.3510775
+  Opt!        f w gOpt  E(fit) [GA] P(d(gOpt, GAopt)<Eps) Eps E(actual fevals) Max(fevals) E(actual generations)
+1 Min! DeJongF1 1    0   0.05625001                  1.00 0.1         5364.040      446468                 6.680
+2 Min! DeJongF2 1    0   0.03371366                  1.00 0.1         1666.225      446468                 2.075
+3 Min! DeJongF3 1  -30 -30.00000000                  1.00 0.1        25406.920      446468                31.640
+4 Min! DeJongF5 1    1   1.02878936                  0.95 0.1        25406.920      446468                31.640
+Best Solution in Iteration: 1 
+Max(fit):  72.45188 No. solutions:  1 Indices of best genes:  45 
+Fitness Min: 69.70596  Q1: 71.54351  Mean: 71.67344  Q3: 71.91004  Max: 72.45188 
+Fitness: 72.45188 Value of Phenotype: 72.45188 
+Phenotype:
+[1] 8.412903e+02 7.841935e+02 1.000000e-05 3.931529e-03 6.745131e-01
+[6] 2.745171e-01
+
+ Robustness Analysis of  UPC4DeJong1975RobustOpt4 finished!
+
+
+ Analyses of  UPC4DeJong1975RobustOpt4 
+
+
+ Analysis of hyper parameter point:
+ 841.2903 784.1935 0.00001 0.003931529 0.6745131 0.2745171 
+
+       Fit sigma(Fit)        t sigma(t) Obs  popsize generations mutrate  bitmutrate crossrate uCrossSwap
+1 71.67344  0.4066002 18.83399 41.46662 200 841.2903    784.1935 0.00001 0.003931529 0.6745131  0.2745171
+           Fit       Time  stdTimeVec     RndPerf      GAPerf        GAfit      GAstd gOpt early gen   agen  feval    afeval    penvn envW
+1  0.103884513  1.0134493  0.63792040 -0.38216664 -0.06086467   0.05979603 0.02564106    0   200 784  6.945 660185  5840.745 DeJongF1    1
+2  0.001328137  0.2524905  0.04197308 -0.05724676 -0.02792224   0.02788565 0.02488924    0   200 784  2.035 660185  1711.435 DeJongF2    1
+3 63.205182760  5.0863821  1.10883261 21.97000000 29.92016000 -30.00000000 0.00000000  -30   200 784 31.720 660185 26676.520 DeJongF3    1
+4  8.363048037 12.4816637 41.39065850 -3.92979358 -1.03855512   1.03365996 0.05966429    1   185 784 62.085 660185 52213.485 DeJongF5    1
+  Obs  OPT      L1err       L2err   L1errstd Psuccess     terminate Eps   SSshare
+1 200 Min! 0.05979603 0.004229742 0.02564106    1.000 AbsoluteError 0.1 0.4107045
+2 200 Min! 0.02788565 0.001393986 0.02488924    1.000 AbsoluteError 0.1 0.1353549
+3 200 Min! 0.00000000 0.000000000 0.00000000    1.000 AbsoluteError 0.1 0.0000000
+4 200 Min! 0.03457175 0.004675021 0.05913799    0.925 AbsoluteError 0.1 0.4539406
+  Opt!        f w gOpt  E(fit) [GA] sigma(fit) [GA]       E(t)    sigma(t)   n
+1 Min! DeJongF1 1    0   0.05979603      0.02564106  1.0134493  0.63792040 200
+2 Min! DeJongF2 1    0   0.02788565      0.02488924  0.2524905  0.04197308 200
+3 Min! DeJongF3 1  -30 -30.00000000      0.00000000  5.0863821  1.10883261 200
+4 Min! DeJongF5 1    1   1.03365996      0.05966429 12.4816637 41.39065850 200
+  Opt!        f w gOpt  E(fit) [GA] E(fit) [Meta] E(RndPerformance) E(GAPerformance)   n
+1 Min! DeJongF1 1    0   0.05979603   0.103884513       -0.38216664      -0.06086467 200
+2 Min! DeJongF2 1    0   0.02788565   0.001328137       -0.05724676      -0.02792224 200
+3 Min! DeJongF3 1  -30 -30.00000000  63.205182760       21.97000000      29.92016000 200
+4 Min! DeJongF5 1    1   1.03365996   8.363048037       -3.92979358      -1.03855512 200
+  Opt!        f w gOpt  E(fit) [GA] P(d(gOpt, GAopt)<Eps)   E(L1err) sigma(L1err)    E(L2err) share(SS)
+1 Min! DeJongF1 1    0   0.05979603                 1.000 0.05979603   0.02564106 0.004229742 0.4107045
+2 Min! DeJongF2 1    0   0.02788565                 1.000 0.02788565   0.02488924 0.001393986 0.1353549
+3 Min! DeJongF3 1  -30 -30.00000000                 1.000 0.00000000   0.00000000 0.000000000 0.0000000
+4 Min! DeJongF5 1    1   1.03365996                 0.925 0.03457175   0.05913799 0.004675021 0.4539406
+  Opt!        f w gOpt  E(fit) [GA] P(d(gOpt, GAopt)<Eps) Eps E(actual fevals) Max(fevals) E(actual generations)
+1 Min! DeJongF1 1    0   0.05979603                 1.000 0.1         5840.745      660185                 6.945
+2 Min! DeJongF2 1    0   0.02788565                 1.000 0.1         1711.435      660185                 2.035
+3 Min! DeJongF3 1  -30 -30.00000000                 1.000 0.1        26676.520      660185                31.720
+4 Min! DeJongF5 1    1   1.03365996                 0.925 0.1        52213.485      660185                62.085
+Best Solution in Iteration: 1 
+Max(fit):  72.49408 No. solutions:  1 Indices of best genes:  178 
+Fitness Min: 63.82891  Q1: 70.51789  Mean: 70.94137  Q3: 71.55385  Max: 72.49408 
+Fitness: 72.49408 Value of Phenotype: 72.49408 
+Phenotype:
+[1] 310.96774194 317.74193548   0.06275447   0.04706835   0.64314082
+[6]   0.27059553
+
+ Robustness Analysis of  UPC4DeJong1975RobustOpt5 finished!
+
+
+ Analyses of  UPC4DeJong1975RobustOpt5 
+
+
+ Analysis of hyper parameter point:
+ 310.9677 317.7419 0.06275447 0.04706835 0.6431408 0.2705955 
+
+       Fit sigma(Fit)        t sigma(t) Obs  popsize generations    mutrate bitmutrate crossrate uCrossSwap
+1 70.94137  0.9599499 10.71022 11.57491 200 310.9677    317.7419 0.06275447 0.04706835 0.6431408  0.2705955
+            Fit      Time  stdTimeVec     RndPerf      GAPerf        GAfit      GAstd gOpt early gen   agen feval   afeval    penvn envW
+1  0.1023991784 0.5896231  0.33729632 -0.38216664 -0.06330989   0.06068522 0.02734657    0   200 317 10.960 98580  3397.60 DeJongF1    1
+2  0.0005545181 0.1329487  0.06417588 -0.05724676 -0.04392225   0.04366484 0.02740886    0   200 317  3.035 98580   940.85 DeJongF2    1
+3 62.8974732700 2.1412422  0.60278950 21.97000000 29.90077000 -30.00000000 0.00000000  -30   200 317 37.135 98580 11511.85 DeJongF3    1
+4  7.9409436508 7.8464023 11.53964357 -3.92979358 -1.11825350   1.10050518 0.18077576    1   142 317 97.080 98580 30094.80 DeJongF5    1
+  Obs  OPT      L1err       L2err   L1errstd Psuccess     terminate Eps    SSshare
+1 200 Min! 0.06068522 0.004426791 0.02734657     1.00 AbsoluteError 0.1 0.08907263
+2 200 Min! 0.04366484 0.002654108 0.02740886     1.00 AbsoluteError 0.1 0.05340400
+3 200 Min! 0.00000000 0.000000000 0.00000000     1.00 AbsoluteError 0.1 0.00000000
+4 200 Min! 0.10126718 0.042617768 0.18034787     0.71 AbsoluteError 0.1 0.85752336
+  Opt!        f w gOpt  E(fit) [GA] sigma(fit) [GA]      E(t)    sigma(t)   n
+1 Min! DeJongF1 1    0   0.06068522      0.02734657 0.5896231  0.33729632 200
+2 Min! DeJongF2 1    0   0.04366484      0.02740886 0.1329487  0.06417588 200
+3 Min! DeJongF3 1  -30 -30.00000000      0.00000000 2.1412422  0.60278950 200
+4 Min! DeJongF5 1    1   1.10050518      0.18077576 7.8464023 11.53964357 200
+  Opt!        f w gOpt  E(fit) [GA] E(fit) [Meta] E(RndPerformance) E(GAPerformance)   n
+1 Min! DeJongF1 1    0   0.06068522  0.1023991784       -0.38216664      -0.06330989 200
+2 Min! DeJongF2 1    0   0.04366484  0.0005545181       -0.05724676      -0.04392225 200
+3 Min! DeJongF3 1  -30 -30.00000000 62.8974732700       21.97000000      29.90077000 200
+4 Min! DeJongF5 1    1   1.10050518  7.9409436508       -3.92979358      -1.11825350 200
+  Opt!        f w gOpt  E(fit) [GA] P(d(gOpt, GAopt)<Eps)   E(L1err) sigma(L1err)    E(L2err)  share(SS)
+1 Min! DeJongF1 1    0   0.06068522                  1.00 0.06068522   0.02734657 0.004426791 0.08907263
+2 Min! DeJongF2 1    0   0.04366484                  1.00 0.04366484   0.02740886 0.002654108 0.05340400
+3 Min! DeJongF3 1  -30 -30.00000000                  1.00 0.00000000   0.00000000 0.000000000 0.00000000
+4 Min! DeJongF5 1    1   1.10050518                  0.71 0.10126718   0.18034787 0.042617768 0.85752336
+  Opt!        f w gOpt  E(fit) [GA] P(d(gOpt, GAopt)<Eps) Eps E(actual fevals) Max(fevals) E(actual generations)
+1 Min! DeJongF1 1    0   0.06068522                  1.00 0.1          3397.60       98580                10.960
+2 Min! DeJongF2 1    0   0.04366484                  1.00 0.1           940.85       98580                 3.035
+3 Min! DeJongF3 1  -30 -30.00000000                  1.00 0.1         11511.85       98580                37.135
+4 Min! DeJongF5 1    1   1.10050518                  0.71 0.1         30094.80       98580                97.080
